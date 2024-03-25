@@ -22,11 +22,16 @@ lines = [
 	}
 ];
 
-lineIndex = -1;
+dsLines = ds_list_create();
+
+ds_list_add(dsLines, {lines : lines, lineIndex : 0});
+
+currentLines = dsLines[|0].lines;
+lineIndex = 0;
 text = "Mario.";
 goto = noone;
 
-choices = noone
+choices = noone;
 choiceIndex = 0;
 choiceYOffset = 16;
 choiceYPositions = noone;
@@ -40,3 +45,64 @@ function ChangeRoom(_roomIndex)
 {
 	//
 }
+
+function LoadCurrentLinesAndIndex()
+{
+	currentLines = dsLines[|ds_list_size(dsLines) - 1].lines;
+	lineIndex = dsLines[|ds_list_size(dsLines) - 1].lineIndex;
+}
+
+function ResolveLine()
+{
+	if(lineIndex >= array_length(currentLines))
+	{
+		ds_list_delete(dsLines, ds_list_size(dsLines) - 1);
+		if(ds_list_empty(dsLines))
+			Close();
+		else
+		{
+			LoadCurrentLinesAndIndex();
+			ResolveLine();
+		}
+	}else
+	{
+		//Choice.
+		if(struct_exists(currentLines[lineIndex], "choices"))
+		{
+			choices = currentLines[lineIndex].choices;
+		
+			//Add choice text.
+			text = array_create(array_length(choices));
+			choiceYPositions = array_create(array_length(choices))
+			for(var _i = 0; _i < array_length(choices); _i ++)
+			{
+				text[_i] = choices[_i].text;
+				choiceYPositions[_i] = y + _i * choiceYOffset;
+			}
+			
+		}else if(choices != noone)
+		{
+			//Resolve choice.
+			//Save current line index.
+			dsLines[|ds_list_size(dsLines) - 1].lineIndex = lineIndex;
+			ds_list_add(dsLines, {lines : choices[choiceIndex].lines, lineIndex : 0});
+			LoadCurrentLinesAndIndex();
+			choices = noone;
+			choiceIndex = 0;
+			ResolveLine();
+		}else if(struct_exists(currentLines[lineIndex], "text"))
+		{
+			//Text.
+			text = currentLines[lineIndex].text;
+		}
+	}
+	
+	if(goto != noone)
+	{
+		ChangeRoom(asset_get_index(goto));
+	}
+	
+	show_debug_message(choiceIndex);
+}
+
+ResolveLine();
