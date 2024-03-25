@@ -7,7 +7,7 @@ function Input(){
 enum INPUT 
 {
 	mouseOver,
-	clicked
+	clicked,
 }
 
 function GetInput(_inputEnum)

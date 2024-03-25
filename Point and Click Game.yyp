@@ -37,7 +37,7 @@
     {"id":{"name":"obj_interactables","path":"objects/obj_interactables/obj_interactables.yy",},},
     {"id":{"name":"spr_test","path":"sprites/spr_test/spr_test.yy",},},
     {"id":{"name":"obj_textbox","path":"objects/obj_textbox/obj_textbox.yy",},},
-    {"id":{"name":"fnt_basic","path":"fonts/fnt_basic/fnt_basic.yy",},},
+    {"id":{"name":"fnt_pixel","path":"fonts/fnt_pixel/fnt_pixel.yy",},},
     {"id":{"name":"Input","path":"scripts/Input/Input.yy",},},
     {"id":{"name":"Room1","path":"rooms/Room1/Room1.yy",},},
   ],

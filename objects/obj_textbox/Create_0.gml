@@ -20,4 +20,18 @@ lines = [
 		text : "I need to get out of here.",
 		goto : "rm_bedroom"
 	}
-]
+];
+
+lineIndex = 0;
+text = "Mario.";
+goto = noone;
+
+function Close()
+{
+	instance_destroy();
+}
+
+function ChangeRoom(_roomIndex)
+{
+	//
+}
