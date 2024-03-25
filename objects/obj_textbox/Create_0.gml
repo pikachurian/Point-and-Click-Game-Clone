@@ -22,9 +22,14 @@ lines = [
 	}
 ];
 
-lineIndex = 0;
+lineIndex = -1;
 text = "Mario.";
 goto = noone;
+
+choices = noone
+choiceIndex = 0;
+choiceYOffset = 16;
+choiceYPositions = noone;
 
 function Close()
 {
