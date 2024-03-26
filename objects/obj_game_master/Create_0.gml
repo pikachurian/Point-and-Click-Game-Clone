@@ -14,6 +14,11 @@ state = GS.setup;
 
 currentRoomString = noone;
 
+//The ID of the current instance being interacted with.
+interactableTarget = noone;
+
+has_apple = false;
+has_key = false;
 
 function ChangeRoom(_roomString)
 {
@@ -43,13 +48,28 @@ function ChangeRoom(_roomString)
 	//Create a textbox with lines.
 	if(struct_exists(_roomStruct, "lines"))
 	{
-		ChangeState(GS.inTextbox);
+		/*ChangeState(GS.inTextbox);
 		var _textbox = instance_create_layer(0, 96, "Textbox", obj_textbox);
-		_textbox.lines = _roomStruct.lines;
+		_textbox.lines = _roomStruct.lines;*/
+		CreateTextbox(_roomStruct.lines);
 	}
 }
 
 function ChangeState(_state)
 {
 	state = _state;
+}
+
+function SetTrue(_varString)
+{
+	variable_instance_set(id, _varString, true);
+	show_debug_message(_varString + " set to " + string(variable_instance_get(id, _varString)));
+	
+	switch(_varString)
+	{
+		case "has_apple":
+			if(instance_exists(interactableTarget))
+				instance_destroy(interactableTarget);
+			break;
+	}
 }

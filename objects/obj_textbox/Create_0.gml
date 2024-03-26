@@ -1,4 +1,4 @@
-lines = [
+lines = noone;/*[
 	{text : "Huh?"},
 	{
 		choices : [
@@ -20,15 +20,17 @@ lines = [
 		text : "I need to get out of here.",
 		goto : "rm_bedroom"
 	}
-];
+];*/
+
+finishedSetup = false;
 
 dsLines = ds_list_create();
 
-ds_list_add(dsLines, {lines : lines, lineIndex : 0});
+//ds_list_add(dsLines, {lines : lines, lineIndex : 0});
 
-currentLines = dsLines[|0].lines;
+currentLines = noone//dsLines[|0].lines;
 lineIndex = 0;
-text = "Mario.";
+text = noone;//"Mario.";
 goto = noone;
 
 choices = noone;
@@ -109,9 +111,15 @@ function ResolveLine()
 			//Set goto room.
 			goto = currentLines[lineIndex].goto;
 		}
+		
+		if(struct_exists(currentLines[lineIndex], "set_true"))
+		{
+			//Set a variable in the game master object to true.
+			obj_game_master.SetTrue(currentLines[lineIndex].set_true);
+		}
 	}
 	
 	//show_debug_message(choiceIndex);
 }
 
-ResolveLine();
+//ResolveLine();

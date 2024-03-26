@@ -25,8 +25,8 @@
   "nineSlice": null,
   "origin": 0,
   "parent": {
-    "name": "Interactables",
-    "path": "folders/Sprites/Interactables.yy",
+    "name": "Bedroom",
+    "path": "folders/Sprites/Interactables/Bedroom.yy",
   },
   "preMultiplyAlpha": false,
   "sequence": {

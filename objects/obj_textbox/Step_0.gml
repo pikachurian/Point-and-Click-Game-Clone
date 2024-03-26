@@ -1,3 +1,13 @@
+if(finishedSetup == false) && (lines != noone)
+{
+	finishedSetup = true;
+	ds_list_add(dsLines, {lines : lines, lineIndex : 0});
+	currentLines = dsLines[|0].lines;
+	lineIndex = 0;
+	ResolveLine();
+	exit;
+}
+
 if(currentLines != noone)
 {
 	//When textbox is clicked.
