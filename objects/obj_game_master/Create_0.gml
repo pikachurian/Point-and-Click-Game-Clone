@@ -29,6 +29,17 @@ function ChangeRoom(_roomString)
 	}
 	obj_background.sprite_index = _backgroundSprite;
 	
+	//Create interactables.
+	if(struct_exists(_roomStruct, "interactables"))
+	{
+		var _interactableNames = struct_get_names(_roomStruct.interactables);
+		for(var _i = 0; _i < array_length(_interactableNames); _i ++)
+		{
+			var _inst = instance_create_layer(0, 0, "Instances", obj_interactable);
+			_inst.LoadStructData(struct_get(_roomStruct.interactables, _interactableNames[_i]), _interactableNames[_i]);
+		}
+	}
+	
 	//Create a textbox with lines.
 	if(struct_exists(_roomStruct, "lines"))
 	{
