@@ -38,6 +38,7 @@ choiceYPositions = noone;
 
 function Close()
 {
+	obj_game_master.ChangeState(GS.main);
 	instance_destroy();
 }
 
@@ -54,7 +55,12 @@ function LoadCurrentLinesAndIndex()
 
 function ResolveLine()
 {
-	if(lineIndex >= array_length(currentLines))
+	//If goto was set to a room, change rooms.
+	if(goto != noone)
+	{
+		obj_game_master.ChangeRoom(goto);
+		Close();
+	}else if(lineIndex >= array_length(currentLines))
 	{
 		ds_list_delete(dsLines, ds_list_size(dsLines) - 1);
 		if(ds_list_empty(dsLines))
@@ -90,19 +96,22 @@ function ResolveLine()
 			choices = noone;
 			choiceIndex = 0;
 			ResolveLine();
-		}else if(struct_exists(currentLines[lineIndex], "text"))
+		}
+		
+		if(struct_exists(currentLines[lineIndex], "text"))
 		{
-			//Text.
+			//Set draw text.
 			text = currentLines[lineIndex].text;
+		}
+		
+		if(struct_exists(currentLines[lineIndex], "goto"))
+		{
+			//Set goto room.
+			goto = currentLines[lineIndex].goto;
 		}
 	}
 	
-	if(goto != noone)
-	{
-		ChangeRoom(asset_get_index(goto));
-	}
-	
-	show_debug_message(choiceIndex);
+	//show_debug_message(choiceIndex);
 }
 
 ResolveLine();
