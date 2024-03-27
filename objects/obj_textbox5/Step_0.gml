@@ -4,7 +4,7 @@ if(finishedSetup == false) && (lines != noone)
 	ds_list_add(dsLines, {lines : lines, lineIndex : 0});
 	currentLines = dsLines[|0].lines;
 	lineIndex = 0;
-	StartLine();
+	ResolveLine();
 	exit;
 }
 
@@ -13,7 +13,7 @@ if(currentLines != noone)
 	//When textbox is clicked.
 	if(GetInput(INPUT.mousePressed))
 	{
-		//lineIndex += 1;		
+		lineIndex += 1;		
 		ResolveLine();
 	}
 
