@@ -392,7 +392,18 @@ function GotoCheck()
 
 function LinesEndCheck()
 {
-	if(lineIndex >= array_length(currentLines))
+	while(lineIndex >= array_length(currentLines))
+	{
+		ds_list_delete(dsLines, ds_list_size(dsLines) - 1);
+		if(ds_list_empty(dsLines))
+		{
+			Close();
+			break;
+		}
+		LoadCurrentLinesAndIndex();
+	}
+	
+	/*if(lineIndex >= array_length(currentLines))
 	{
 		ds_list_delete(dsLines, ds_list_size(dsLines) - 1);
 		//show_debug_message("AAAAAAAAAAAAAAAAAABBBBBBBB");
@@ -408,7 +419,7 @@ function LinesEndCheck()
 			//ResolveLine();
 		}
 		return;
-	}
+	}*/
 }
 
 //ResolveLine();
