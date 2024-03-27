@@ -57,8 +57,7 @@ function LoadCurrentLinesAndIndex()
 
 function ResolveLine()
 {
-	//If goto was set to a room, change rooms.
-	if(goto != noone)
+	if(goto != noone) //If goto was set to a room, change rooms.
 	{
 		Close();
 		obj_game_master.ChangeRoom(goto);
@@ -74,10 +73,21 @@ function ResolveLine()
 			LoadCurrentLinesAndIndex();
 			show_debug_message(lineIndex);
 			ResolveLine();
-			return;
 		}
+		return;
 	}else
 	{
+		if(HasConditional(currentLines[lineIndex])) //Conditional Check
+		{
+			if(CheckConditional(currentLines[lineIndex]) == false)
+			{
+				lineIndex += 1;		
+				ResolveLine();
+				show_debug_message("Conditional False");
+				return;
+			}
+		}
+		
 		//Choice.
 		if(struct_exists(currentLines[lineIndex], "choices"))
 		{
@@ -138,15 +148,20 @@ function ResolveLine()
 			LoadCurrentLinesAndIndex();
 			choices = noone;
 			choiceIndex = 0;*/
-			//lineIndex is incremented in AddNewLines, so this offsets it only for
+			
+			/*//lineIndex is incremented in AddNewLines, so this offsets it only for
 			//branching lines.  This seems random, but it works.
 			if(struct_exists(choices[choiceIndex], "lines"))
 			{
 				lineIndex -= 1;
 				AddNewLines(choices[choiceIndex].lines);
 				ResolveLine();
-			}
-		}
+			}*/
+			CheckAndAddNewLines(choices[choiceIndex]);
+		}else
+			CheckAndAddNewLines(currentLines[lineIndex]);
+		
+
 		
 		if(struct_exists(currentLines[lineIndex], "text"))
 		{
@@ -167,7 +182,7 @@ function ResolveLine()
 		}
 		
 		//Conditional Check
-		if(HasConditional(currentLines[lineIndex]))
+		/*if(HasConditional(currentLines[lineIndex]))
 		{
 			if(CheckConditional(currentLines[lineIndex]))
 			{
@@ -178,7 +193,7 @@ function ResolveLine()
 			}
 			
 			ResolveLine();
-		}
+		}*/
 		
 		/*if(struct_exists(currentLines[lineIndex], "if_true")) ||
 		(struct_exists(currentLines[lineIndex], "if_false"))
@@ -211,7 +226,9 @@ function ResolveLine()
 //This adds a new lines array to resolve.
 function AddNewLines(_lines)
 {
-	lineIndex += 1;
+	if(lineIndex == 0)
+		lineIndex += 1;
+	//lineIndex += 1;
 	//Save current line index.
 	dsLines[|ds_list_size(dsLines) - 1].lineIndex = lineIndex;
 	
@@ -228,6 +245,19 @@ function HasConditional(_struct)
 	(struct_exists(_struct, "if_false"))
 		return true;
 	return false;
+}
+
+function CheckAndAddNewLines(_struct)
+{
+	//Add new lines array to dsLines.
+	if(struct_exists(_struct, "lines"))
+	{	
+		//lineIndex is incremented in AddNewLines, so this offsets it only for
+		//branching lines.  This seems random, but it works.
+		//lineIndex -= 1;
+		AddNewLines(_struct.lines);
+		ResolveLine();
+	}
 }
 
 function CheckConditional(_struct)
