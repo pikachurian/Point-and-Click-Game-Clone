@@ -182,12 +182,12 @@ global.gameData = {
                                 ]
                             },
                             {
-                                "speaker": "Voice in Fridge",
-                                "text": "If you want to enter the fridge, you must give me food",
-                                "set_true": "met_voice"
+                                speaker : "Voice in Fridge",
+                                text : "If you want to enter the fridge, you must give me food",
+                                set_true : "met_voice"
                             }
                         ]
-                    },
+                    }/*,
                     {
                         if_true : "met_voice",
                         lines : [
@@ -222,7 +222,7 @@ global.gameData = {
                                 ]
                             }
                         ]
-                    }
+                    }*/
 
                 ]
             }
@@ -230,7 +230,7 @@ global.gameData = {
 
     },
     rm_voice_happy : {
-        "dev_notes": "Fridge opens to show an idyllic peaceful landscape and the player escapes to freedom",
+        dev_notes : "Fridge opens to show an idyllic peaceful landscape and the player escapes to freedom",
         free_move : false,
         lines : [
             { text : "Finally, I can get out of here and follow my true passion: cryptocurrency" },

@@ -101,7 +101,10 @@ function StartLine()
 
 	if(choices != noone)
 	{
-		CheckAndAddNewLines(choices[choiceIndex]);
+		if(CheckAndAddNewLines(choices[choiceIndex]))
+		{
+			dsLines[|ds_list_size(dsLines) - 2].lineIndex -= 1;
+		}
 	}else
 		CheckAndAddNewLines(currentLines[lineIndex]);
 		
@@ -126,7 +129,7 @@ function ResolveChoice()
 	if(choices != noone)
 	{
 		
-		show_debug_message("Made a choice.")
+		//show_debug_message("Made a choice.")
 		CheckAndAddNewLines(choices[choiceIndex]);
 		choices = noone;
 		return true;
@@ -233,8 +236,8 @@ function ResolveLineSkibidi()
 //This adds a new lines array to resolve.
 function AddNewLines(_lines)
 {
-	if(lineIndex == 0)
-		lineIndex += 1;
+	//if(lineIndex == 0)
+	//	lineIndex += 1;
 	//lineIndex += 1;
 	//Save current line index.
 	dsLines[|ds_list_size(dsLines) - 1].lineIndex = lineIndex;
@@ -264,9 +267,9 @@ function CheckAndAddNewLines(_struct)
 		//branching lines.  This seems random, but it works.
 		//lineIndex -= 1;
 		AddNewLines(_struct.lines);
-		show_debug_message("lineIndex " + string(lineIndex));
+		/*show_debug_message("lineIndex " + string(lineIndex));
 		show_debug_message("dsLines Size " + string(ds_list_size(dsLines)));
-		show_debug_message("currentLines " + string(currentLines));
+		show_debug_message("currentLines " + string(currentLines));*/
 		//StartLine();
 		return true;
 	}
@@ -401,6 +404,7 @@ function LinesEndCheck()
 			break;
 		}
 		LoadCurrentLinesAndIndex();
+		lineIndex += 1;
 	}
 	
 	/*if(lineIndex >= array_length(currentLines))
