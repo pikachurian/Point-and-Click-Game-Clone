@@ -19,6 +19,8 @@ interactableTarget = noone;
 
 has_apple = false;
 has_key = false;
+met_voice = false;
+has_fish = false;
 
 function ChangeRoom(_roomString)
 {

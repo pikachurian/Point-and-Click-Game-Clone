@@ -4,6 +4,7 @@ function LoadStructData(_struct, _structName)
 {
 	ChangeSprite(_structName);
 	lines = _struct.lines;
+	show_debug_message(_structName + " | " + string(_struct));
 }
 
 function ChangeSprite(_string)

@@ -88,9 +88,46 @@ function ResolveLine()
 			choiceYPositions = array_create(array_length(choices))
 			for(var _i = 0; _i < array_length(choices); _i ++)
 			{
-				text[_i] = choices[_i].text;
-				choiceYPositions[_i] = y + _i * choiceYOffset;
+				if(HasConditional(currentLines[lineIndex].choices[_i]))
+				{
+					show_debug_message("has conditional");
+					if(CheckConditional(currentLines[lineIndex].choices[_i]))
+					{
+						text[_i] = choices[_i].text;
+						choiceYPositions[_i] = y + _i * choiceYOffset;
+					}else
+					{
+						text[_i] = "";
+						choiceYPositions[_i] = noone;
+						show_debug_message("ERRORERROR");
+					}
+				}else
+				{
+					text[_i] = choices[_i].text;
+					choiceYPositions[_i] = y + _i * choiceYOffset;
+				}
 			}
+			
+			//If all choices are locked, then go to the next line.
+			var _resolveNextLine = true;
+			var _choiceIndexStart = noone;
+			for(var _i = 0; _i < array_length(choices); _i ++)
+			{
+				if(choiceYPositions[_i] != noone)
+				{
+					_resolveNextLine = false;
+					
+					if(_choiceIndexStart == noone)
+						_choiceIndexStart = _i;
+				}
+			}
+			
+			if(_resolveNextLine)
+			{
+				lineIndex += 1;
+				ResolveLine();
+			}else
+				choiceIndex = _choiceIndexStart;
 			
 		}else if(choices != noone)
 		{
@@ -103,9 +140,12 @@ function ResolveLine()
 			choiceIndex = 0;*/
 			//lineIndex is incremented in AddNewLines, so this offsets it only for
 			//branching lines.  This seems random, but it works.
-			lineIndex -= 1;
-			AddNewLines(choices[choiceIndex].lines);
-			ResolveLine();
+			if(struct_exists(choices[choiceIndex], "lines"))
+			{
+				lineIndex -= 1;
+				AddNewLines(choices[choiceIndex].lines);
+				ResolveLine();
+			}
 		}
 		
 		if(struct_exists(currentLines[lineIndex], "text"))
@@ -126,11 +166,34 @@ function ResolveLine()
 			obj_game_master.SetTrue(currentLines[lineIndex].set_true);
 		}
 		
-		if(struct_exists(currentLines[lineIndex], "if_true"))
+		//Conditional Check
+		if(HasConditional(currentLines[lineIndex]))
+		{
+			if(CheckConditional(currentLines[lineIndex]))
+			{
+				AddNewLines(currentLines[lineIndex].lines);
+			}else
+			{
+				lineIndex += 1;
+			}
+			
+			ResolveLine();
+		}
+		
+		/*if(struct_exists(currentLines[lineIndex], "if_true")) ||
+		(struct_exists(currentLines[lineIndex], "if_false"))
 		{
 			//Conditional check.
-			var _varToCheck = variable_instance_get(obj_game_master, currentLines[lineIndex].if_true);
-			if(_varToCheck == true)
+			var _goal = true;
+			var _varName = "if_true";
+			if(struct_exists(currentLines[lineIndex], "if_false"))
+			{
+				_goal = false;
+				_varName = "if_false";	
+			}
+				
+			var _varToCheck = variable_instance_get(obj_game_master, struct_get(currentLines[lineIndex], _varName));
+			if(_varToCheck == _goal)
 			{
 				AddNewLines(currentLines[lineIndex].lines);
 				ResolveLine();
@@ -139,7 +202,7 @@ function ResolveLine()
 				lineIndex += 1;
 				ResolveLine();
 			}
-		}
+		}*/
 	}
 	
 	//show_debug_message(choiceIndex);
@@ -157,6 +220,33 @@ function AddNewLines(_lines)
 	LoadCurrentLinesAndIndex();
 	choices = noone;
 	choiceIndex = 0;
+}
+
+function HasConditional(_struct)
+{
+	if(struct_exists(_struct, "if_true")) ||
+	(struct_exists(_struct, "if_false"))
+		return true;
+	return false;
+}
+
+function CheckConditional(_struct)
+{
+
+	//Conditional check.
+	var _goal = true;
+	var _varName = "if_true";
+	if(struct_exists(_struct, "if_false"))
+	{
+		_goal = false;
+		_varName = "if_false";	
+	}
+		
+	var _varToCheck = variable_instance_get(obj_game_master, struct_get(_struct, _varName));
+	if(_varToCheck == _goal)
+		return true;
+	else		
+		return false;
 }
 
 //ResolveLine();
