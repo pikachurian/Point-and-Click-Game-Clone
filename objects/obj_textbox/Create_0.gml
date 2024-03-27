@@ -101,12 +101,19 @@ function StartLine()
 
 	if(choices != noone)
 	{
+		show_debug_message("Made a choice.");
 		if(CheckAndAddNewLines(choices[choiceIndex]))
 		{
-			dsLines[|ds_list_size(dsLines) - 2].lineIndex -= 1;
+			//dsLines[|ds_list_size(dsLines) - 2].lineIndex -= 1;
+		}else
+		{
+			NextLine();
 		}
 	}else
 		CheckAndAddNewLines(currentLines[lineIndex]);
+		
+	if(closing)
+		return;
 		
 	UpdateText();
 	UpdateChoices();
@@ -267,9 +274,9 @@ function CheckAndAddNewLines(_struct)
 		//branching lines.  This seems random, but it works.
 		//lineIndex -= 1;
 		AddNewLines(_struct.lines);
-		/*show_debug_message("lineIndex " + string(lineIndex));
+		show_debug_message("lineIndex " + string(lineIndex));
 		show_debug_message("dsLines Size " + string(ds_list_size(dsLines)));
-		show_debug_message("currentLines " + string(currentLines));*/
+		show_debug_message("currentLines " + string(currentLines));
 		//StartLine();
 		return true;
 	}
@@ -347,6 +354,7 @@ function UpdateChoices()
 			}else
 				choiceIndex = _choiceIndexStart;
 			
+			lineIndex -= 1;
 		}
 }
 

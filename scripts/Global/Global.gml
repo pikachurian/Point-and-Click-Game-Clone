@@ -187,7 +187,7 @@ global.gameData = {
                                 set_true : "met_voice"
                             }
                         ]
-                    }/*,
+                    },
                     {
                         if_true : "met_voice",
                         lines : [
@@ -222,7 +222,7 @@ global.gameData = {
                                 ]
                             }
                         ]
-                    }*/
+                    }
 
                 ]
             }
