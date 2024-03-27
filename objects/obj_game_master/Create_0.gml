@@ -74,6 +74,8 @@ function SetTrue(_varString)
 	switch(_varString)
 	{
 		case "has_apple":
+		case "has_key":
+		case "has_fish":
 			if(instance_exists(interactableTarget))
 				instance_destroy(interactableTarget);
 			break;
