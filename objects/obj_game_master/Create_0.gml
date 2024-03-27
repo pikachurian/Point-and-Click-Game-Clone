@@ -22,6 +22,10 @@ has_key = false;
 
 function ChangeRoom(_roomString)
 {
+	//Delete existing interactables.
+	with(obj_interactable)
+		instance_destroy();
+	
 	ChangeState(GS.main);
 	show_debug_message(_roomString);
 	var _roomStruct = struct_get(gameData, _roomString);

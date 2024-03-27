@@ -65,12 +65,16 @@ function ResolveLine()
 	}else if(lineIndex >= array_length(currentLines))
 	{
 		ds_list_delete(dsLines, ds_list_size(dsLines) - 1);
+		show_debug_message("AAAAAAAAAAAAAAAAAABBBBBBBB");
+		show_debug_message(ds_list_size(dsLines));
 		if(ds_list_empty(dsLines))
 			Close();
 		else
 		{
 			LoadCurrentLinesAndIndex();
+			show_debug_message(lineIndex);
 			ResolveLine();
+			return;
 		}
 	}else
 	{
@@ -91,12 +95,16 @@ function ResolveLine()
 		}else if(choices != noone)
 		{
 			//Resolve choice.
-			//Save current line index.
+			/*//Save current line index.
 			dsLines[|ds_list_size(dsLines) - 1].lineIndex = lineIndex;
 			ds_list_add(dsLines, {lines : choices[choiceIndex].lines, lineIndex : 0});
 			LoadCurrentLinesAndIndex();
 			choices = noone;
-			choiceIndex = 0;
+			choiceIndex = 0;*/
+			//lineIndex is incremented in AddNewLines, so this offsets it only for
+			//branching lines.  This seems random, but it works.
+			lineIndex -= 1;
+			AddNewLines(choices[choiceIndex].lines);
 			ResolveLine();
 		}
 		
@@ -117,9 +125,38 @@ function ResolveLine()
 			//Set a variable in the game master object to true.
 			obj_game_master.SetTrue(currentLines[lineIndex].set_true);
 		}
+		
+		if(struct_exists(currentLines[lineIndex], "if_true"))
+		{
+			//Conditional check.
+			var _varToCheck = variable_instance_get(obj_game_master, currentLines[lineIndex].if_true);
+			if(_varToCheck == true)
+			{
+				AddNewLines(currentLines[lineIndex].lines);
+				ResolveLine();
+			}else
+			{
+				lineIndex += 1;
+				ResolveLine();
+			}
+		}
 	}
 	
 	//show_debug_message(choiceIndex);
+}
+
+//This adds a new lines array to resolve.
+function AddNewLines(_lines)
+{
+	lineIndex += 1;
+	//Save current line index.
+	dsLines[|ds_list_size(dsLines) - 1].lineIndex = lineIndex;
+	
+	//Add new lines array.
+	ds_list_add(dsLines, {lines : _lines, lineIndex : 0});
+	LoadCurrentLinesAndIndex();
+	choices = noone;
+	choiceIndex = 0;
 }
 
 //ResolveLine();
