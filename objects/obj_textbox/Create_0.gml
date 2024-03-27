@@ -60,12 +60,12 @@ function ResolveLine()
 	//If goto was set to a room, change rooms.
 	if(goto != noone)
 	{
-		obj_game_master.ChangeRoom(goto);
 		Close();
+		obj_game_master.ChangeRoom(goto);
 	}else if(lineIndex >= array_length(currentLines))
 	{
 		ds_list_delete(dsLines, ds_list_size(dsLines) - 1);
-		show_debug_message("AAAAAAAAAAAAAAAAAABBBBBBBB");
+		//show_debug_message("AAAAAAAAAAAAAAAAAABBBBBBBB");
 		show_debug_message(ds_list_size(dsLines));
 		if(ds_list_empty(dsLines))
 			Close();
