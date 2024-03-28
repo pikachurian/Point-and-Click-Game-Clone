@@ -34,9 +34,9 @@ function ChangeState(_state)
 
 function Close()
 {
-	//obj_game_master.ChangeState(GS.main);
+	obj_game_master.ChangeState(GS.main);
 	ChangeState(TS.closing);
-	//instance_destroy();
+	instance_destroy();
 	show_debug_message("Closed");
 }
 

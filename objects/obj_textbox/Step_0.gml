@@ -29,8 +29,6 @@ switch(state)
 		break;
 		
 	case TS.closing:
-		obj_game_master.ChangeState(GS.main);
-		instance_destroy();
 		break;
 }
 
