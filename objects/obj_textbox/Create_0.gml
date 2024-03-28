@@ -1,6 +1,6 @@
 lines = noone;
 
-finishedSetup = false;
+//finishedSetup = false;
 
 dsLines = ds_list_create();
 
@@ -14,14 +14,29 @@ choiceIndex = 0;
 choiceYOffset = 16;
 choiceYPositions = noone;
 
-//Is this textbox closing.
-closing = false;
+/*//Is this textbox closing.
+closing = false;*/
+
+//Textbox States.
+enum TS 
+{
+	setup,
+	main,
+	closing
+}
+
+state = TS.setup;
+
+function ChangeState(_state)
+{
+	state = _state;	
+}
 
 function Close()
 {
-	obj_game_master.ChangeState(GS.main);
-	closing = true;
-	instance_destroy();
+	//obj_game_master.ChangeState(GS.main);
+	ChangeState(TS.closing);
+	//instance_destroy();
 	show_debug_message("Closed");
 }
 
@@ -50,7 +65,7 @@ function ResolveLine()
 	
 	LinesEndCheck();
 	
-	if(closing)
+	if(state == TS.closing)
 		return;
 		
 	StartLine();
@@ -65,11 +80,12 @@ function StartLine()
 		if(CheckConditional(currentLines[lineIndex]) == false)
 		{
 			NextLine();
-			if(closing)
+			if(state == TS.closing)
 				return;
 		}
 	}
 
+	//Resolve choice.
 	if(choices != noone)
 	{
 		show_debug_message("Made a choice.");
@@ -84,7 +100,7 @@ function StartLine()
 	}else//Check if a new lines array needs to be added, and add it if so.
 		CheckAndAddNewLines(currentLines[lineIndex]);
 		
-	if(closing)
+	if(state == TS.closing)
 		return;
 		
 	UpdateText();
@@ -96,7 +112,7 @@ function EndLine()
 {
 	UpdateVariable();
 	GotoCheck();
-	if(closing)
+	if(state == TS.closing)
 		return false;
 	return true;
 }
