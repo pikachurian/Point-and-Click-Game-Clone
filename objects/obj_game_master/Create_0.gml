@@ -1,4 +1,14 @@
-gameData = global.gameData;
+gameData = noone;//global.gameData;
+
+//Load JSON.
+if(file_exists("mystery.json"))
+{
+	var _buffer = buffer_load("mystery.json");
+	var _string = buffer_read(_buffer, buffer_string);
+	buffer_delete(_buffer);
+	
+	gameData = json_parse(_string);
+}
 
 //Game State.
 enum GS 
