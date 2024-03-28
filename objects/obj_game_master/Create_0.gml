@@ -33,12 +33,15 @@ function ChangeRoom(_roomString)
 	var _roomStruct = struct_get(gameData, _roomString);
 	//Change background sprite.
 	var _backgroundSprite = spr_background_0;
+	var _backgroundString = string_delete(_roomString, 1, 2);
+	_backgroundString = "spr" + _backgroundString;
 	switch(_roomString)
 	{
 		case "rm_in_bed": _backgroundSprite = spr_background_0; break;
 		case "rm_bedroom": _backgroundSprite = spr_background_1; break;
 	}
 	obj_background.sprite_index = _backgroundSprite;
+	obj_background.sprite_index = asset_get_index(_backgroundString);
 	
 	//Create interactables.
 	if(struct_exists(_roomStruct, "interactables"))

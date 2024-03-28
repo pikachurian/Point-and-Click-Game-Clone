@@ -39,6 +39,7 @@
     "IDEVersion": "2023.11.1.129",
   },
   "resources": [
+    {"id":{"name":"spr_in_bed","path":"sprites/spr_in_bed/spr_in_bed.yy",},},
     {"id":{"name":"spr_door","path":"sprites/spr_door/spr_door.yy",},},
     {"id":{"name":"obj_textbox5","path":"objects/obj_textbox5/obj_textbox5.yy",},},
     {"id":{"name":"obj_interactable","path":"objects/obj_interactable/obj_interactable.yy",},},
