@@ -7,7 +7,8 @@ dsLines = ds_list_create();
 currentLines = noone;
 lineIndex = 0;
 text = noone;
-goto = noone;
+speaker = noone;
+//goto = noone;
 
 choices = noone;
 choiceIndex = 0;
@@ -57,6 +58,7 @@ function NextLine()
 
 function ResolveLine()
 {
+	speaker = noone;
 	if(EndLine() == false)
 		return;
 	
@@ -104,6 +106,7 @@ function StartLine()
 		return;
 		
 	UpdateText();
+	UpdateSpeaker();
 	UpdateChoices();
 }
 
@@ -237,6 +240,17 @@ function UpdateText()
 		text = currentLines[lineIndex].text;
 	}
 }
+
+//Load the current speaker if any.
+function UpdateSpeaker()
+{
+	if(struct_exists(currentLines[lineIndex], "speaker"))
+	{
+		//Set draw text.
+		speaker = currentLines[lineIndex].speaker;
+	}
+}
+
 
 //Update any variables if needed.
 function UpdateVariable()
