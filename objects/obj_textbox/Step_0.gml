@@ -12,8 +12,7 @@ if(currentLines != noone)
 {
 	//When textbox is clicked.
 	if(GetInput(INPUT.mousePressed))
-	{
-		//lineIndex += 1;		
+	{	
 		ResolveLine();
 	}
 

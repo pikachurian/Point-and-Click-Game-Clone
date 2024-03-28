@@ -1,6 +1,4 @@
 gameData = global.gameData;
-show_debug_message("AAAAAAAAAAAAAAAAAAAAAA");
-show_debug_message(struct_get_names(gameData));
 
 //Game State.
 enum GS 
@@ -31,16 +29,12 @@ function ChangeRoom(_roomString)
 	ChangeState(GS.main);
 	show_debug_message(_roomString);
 	var _roomStruct = struct_get(gameData, _roomString);
+	
 	//Change background sprite.
 	var _backgroundSprite = spr_background_0;
 	var _backgroundString = string_delete(_roomString, 1, 2);
 	_backgroundString = "spr" + _backgroundString;
-	switch(_roomString)
-	{
-		case "rm_in_bed": _backgroundSprite = spr_background_0; break;
-		case "rm_bedroom": _backgroundSprite = spr_background_1; break;
-	}
-	obj_background.sprite_index = _backgroundSprite;
+
 	obj_background.sprite_index = asset_get_index(_backgroundString);
 	
 	//Create interactables.
@@ -57,9 +51,6 @@ function ChangeRoom(_roomString)
 	//Create a textbox with lines.
 	if(struct_exists(_roomStruct, "lines"))
 	{
-		/*ChangeState(GS.inTextbox);
-		var _textbox = instance_create_layer(0, 96, "Textbox", obj_textbox);
-		_textbox.lines = _roomStruct.lines;*/
 		CreateTextbox(_roomStruct.lines);
 	}
 }
@@ -76,6 +67,7 @@ function SetTrue(_varString)
 	
 	switch(_varString)
 	{
+		//Delete this interactables when they are collected.
 		case "has_apple":
 		case "has_key":
 		case "has_fish":

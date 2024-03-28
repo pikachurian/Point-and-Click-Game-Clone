@@ -9,11 +9,6 @@ function CreateTextbox(_lines)
 	obj_game_master.ChangeState(GS.inTextbox);
 	var _textbox = instance_create_layer(0, 96, "Textbox", obj_textbox);
 	_textbox.lines = _lines;
-	/*with(_textbox)
-	{
-		ds_list_clear(dsLines);
-		ds_list_add(dsLines, {lines : lines, lineIndex : 0})
-	}*/
 }
 	
 global.gameData = {
