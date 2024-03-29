@@ -9,10 +9,44 @@ switch(state)
 		break;
 		
 	case TS.main:
+	
+		//Update typewriter effect.
+		UpdateTypewriterEffect();
+		
 		//When textbox is clicked.
 		if(GetInput(INPUT.mousePressed))
 		{	
-			ResolveLine();
+			var _resolvedLine = false;
+			if(text == noone)//Resolve the line of there is no text.
+			{
+				ResolveLine();
+				_resolvedLine = true;
+			}
+			else if(is_string(text)) && (text == textToDraw)//Resolve the line if all the text is drawn.
+			{
+				ResolveLine();
+				_resolvedLine = true;
+			}else if(is_array(text))
+			{
+				var _doResolveLine = true;
+				for(var _i = 0; _i < array_length(text); _i ++)
+				{
+					if(text[_i] != textToDraw[_i])
+						_doResolveLine = false;
+				}
+				
+				if(_doResolveLine)
+				{
+					ResolveLine();
+					_resolvedLine = true;
+				}
+			}
+			
+			if(_resolvedLine == false)
+			{
+				if(text != noone)
+					textToDraw = text;
+			}
 		}
 
 	

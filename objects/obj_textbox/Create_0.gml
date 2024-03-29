@@ -15,6 +15,12 @@ choiceIndex = 0;
 choiceYOffset = 16;
 choiceYPositions = noone;
 
+//Typewriter effect.
+typeTime = 0.1 * game_get_speed(gamespeed_fps);
+typeTick = 0;
+textToDraw = noone;
+textCharactersDrawn = 0;
+
 /*//Is this textbox closing.
 closing = false;*/
 
@@ -238,6 +244,11 @@ function UpdateText()
 	{
 		//Set draw text.
 		text = currentLines[lineIndex].text;
+		textToDraw = "";
+		if(is_array(text))
+			textToDraw = ["", ""];
+			
+		textCharactersDrawn = 0;
 	}
 }
 
@@ -290,4 +301,26 @@ function LinesEndCheck()
 		LoadCurrentLinesAndIndex();
 		lineIndex += 1;
 	}
+}
+
+function UpdateTypewriterEffect()
+{
+	if(text == noone) || (textToDraw == text)	
+		return;
+		
+	if(typeTick >= typeTime)
+	{
+		typeTick = 0;
+		textCharactersDrawn += 1;
+		
+		if(is_string(text))
+			textToDraw = string_copy(text, 0, textCharactersDrawn);
+		else
+		{
+			for(var _i = 0; _i < array_length(text); _i ++)
+			{
+				textToDraw[_i] = string_copy(text[_i], 0, min(textCharactersDrawn, string_length(text[_i])));
+			}
+		}
+	}else typeTick += 1;
 }
