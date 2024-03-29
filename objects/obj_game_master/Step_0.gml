@@ -4,6 +4,7 @@ switch(state)
 		//Load first room.
 		var _rooms = struct_get_names(gameData);
 		ChangeRoom("rm_in_bed");
+		audio_play_sound(sng_background, 10, true);
 		break;
 		
 	case GS.main:

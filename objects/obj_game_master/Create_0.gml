@@ -114,6 +114,7 @@ function ChangeState(_state)
 	state = _state;
 }
 
+//Set a variable to true.
 function SetTrue(_varString)
 {
 	variable_instance_set(id, _varString, true);
@@ -129,4 +130,6 @@ function SetTrue(_varString)
 				instance_destroy(interactableTarget);
 			break;
 	}
+	
+	audio_play_sound(sfx_item_get, 15, false);
 }
