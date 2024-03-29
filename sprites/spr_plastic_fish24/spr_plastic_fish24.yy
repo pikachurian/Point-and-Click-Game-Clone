@@ -1,11 +1,11 @@
 {
   "resourceType": "GMSprite",
   "resourceVersion": "1.0",
-  "name": "spr_plastic_fish",
-  "bbox_bottom": 173,
-  "bbox_left": 51,
-  "bbox_right": 113,
-  "bbox_top": 127,
+  "name": "spr_plastic_fish24",
+  "bbox_bottom": 31,
+  "bbox_left": 81,
+  "bbox_right": 125,
+  "bbox_top": 8,
   "bboxMode": 0,
   "collisionKind": 1,
   "collisionTolerance": 0,
@@ -13,14 +13,14 @@
   "edgeFiltering": false,
   "For3D": false,
   "frames": [
-    {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"7d6c7e50-e8ad-4dec-b0bc-2edd7dabee68",},
+    {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"0c7156f9-5ba8-40ec-a2b7-7163172f16d8",},
   ],
   "gridX": 0,
   "gridY": 0,
   "height": 180,
   "HTile": false,
   "layers": [
-    {"resourceType":"GMImageLayer","resourceVersion":"1.0","name":"0a5a7abb-72ce-4b70-b2a3-308b48160d3a","blendMode":0,"displayName":"default","isLocked":false,"opacity":100.0,"visible":true,},
+    {"resourceType":"GMImageLayer","resourceVersion":"1.0","name":"93c94876-7d5f-49f2-b35f-f5fd68b170ee","blendMode":0,"displayName":"default","isLocked":false,"opacity":100.0,"visible":true,},
   ],
   "nineSlice": null,
   "origin": 0,
@@ -54,7 +54,7 @@
     "timeUnits": 1,
     "tracks": [
       {"resourceType":"GMSpriteFramesTrack","resourceVersion":"1.0","name":"frames","builtinName":0,"events":[],"inheritsTrackColour":true,"interpolation":1,"isCreationTrack":false,"keyframes":{"resourceType":"KeyframeStore<SpriteFrameKeyframe>","resourceVersion":"1.0","Keyframes":[
-            {"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"1.0","Channels":{"0":{"resourceType":"SpriteFrameKeyframe","resourceVersion":"1.0","Id":{"name":"7d6c7e50-e8ad-4dec-b0bc-2edd7dabee68","path":"sprites/spr_plastic_fish/spr_plastic_fish.yy",},},},"Disabled":false,"id":"1da19e3b-ad29-434f-967c-43fa589c9ffb","IsCreationKey":false,"Key":0.0,"Length":1.0,"Stretch":false,},
+            {"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"1.0","Channels":{"0":{"resourceType":"SpriteFrameKeyframe","resourceVersion":"1.0","Id":{"name":"0c7156f9-5ba8-40ec-a2b7-7163172f16d8","path":"sprites/spr_plastic_fish24/spr_plastic_fish24.yy",},},},"Disabled":false,"id":"b92c0a5f-1f35-4768-838c-a3feb5c14b3e","IsCreationKey":false,"Key":0.0,"Length":1.0,"Stretch":false,},
           ],},"modifiers":[],"spriteId":null,"trackColour":0,"tracks":[],"traits":0,},
     ],
     "visibleRange": null,

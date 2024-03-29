@@ -20,5 +20,10 @@ function ChangeSprite(_string)
 		case spr_key:
 			depth += 50;
 			break;
+			
+		case spr_door:
+			if(obj_background.sprite_index == spr_kitchen)
+				sprite_index = spr_door_kitchen;
+			break;
 	}
 }

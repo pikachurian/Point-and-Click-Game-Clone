@@ -1,11 +1,11 @@
 {
   "resourceType": "GMSprite",
   "resourceVersion": "1.0",
-  "name": "spr_plastic_fish",
-  "bbox_bottom": 173,
-  "bbox_left": 51,
-  "bbox_right": 113,
-  "bbox_top": 127,
+  "name": "spr_fish22",
+  "bbox_bottom": 67,
+  "bbox_left": 16,
+  "bbox_right": 60,
+  "bbox_top": 44,
   "bboxMode": 0,
   "collisionKind": 1,
   "collisionTolerance": 0,
@@ -13,14 +13,14 @@
   "edgeFiltering": false,
   "For3D": false,
   "frames": [
-    {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"7d6c7e50-e8ad-4dec-b0bc-2edd7dabee68",},
+    {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"0c7156f9-5ba8-40ec-a2b7-7163172f16d8",},
   ],
   "gridX": 0,
   "gridY": 0,
   "height": 180,
   "HTile": false,
   "layers": [
-    {"resourceType":"GMImageLayer","resourceVersion":"1.0","name":"0a5a7abb-72ce-4b70-b2a3-308b48160d3a","blendMode":0,"displayName":"default","isLocked":false,"opacity":100.0,"visible":true,},
+    {"resourceType":"GMImageLayer","resourceVersion":"1.0","name":"93c94876-7d5f-49f2-b35f-f5fd68b170ee","blendMode":0,"displayName":"default","isLocked":false,"opacity":100.0,"visible":true,},
   ],
   "nineSlice": null,
   "origin": 0,
@@ -32,7 +32,7 @@
   "sequence": {
     "resourceType": "GMSequence",
     "resourceVersion": "1.4",
-    "name": "spr_plastic_fish",
+    "name": "spr_fish",
     "autoRecord": true,
     "backdropHeight": 768,
     "backdropImageOpacity": 0.5,
@@ -54,7 +54,7 @@
     "timeUnits": 1,
     "tracks": [
       {"resourceType":"GMSpriteFramesTrack","resourceVersion":"1.0","name":"frames","builtinName":0,"events":[],"inheritsTrackColour":true,"interpolation":1,"isCreationTrack":false,"keyframes":{"resourceType":"KeyframeStore<SpriteFrameKeyframe>","resourceVersion":"1.0","Keyframes":[
-            {"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"1.0","Channels":{"0":{"resourceType":"SpriteFrameKeyframe","resourceVersion":"1.0","Id":{"name":"7d6c7e50-e8ad-4dec-b0bc-2edd7dabee68","path":"sprites/spr_plastic_fish/spr_plastic_fish.yy",},},},"Disabled":false,"id":"1da19e3b-ad29-434f-967c-43fa589c9ffb","IsCreationKey":false,"Key":0.0,"Length":1.0,"Stretch":false,},
+            {"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"1.0","Channels":{"0":{"resourceType":"SpriteFrameKeyframe","resourceVersion":"1.0","Id":{"name":"0c7156f9-5ba8-40ec-a2b7-7163172f16d8","path":"sprites/spr_fish22/spr_fish22.yy",},},},"Disabled":false,"id":"4eeeb1fc-1f8c-427c-bc49-1f2276178f48","IsCreationKey":false,"Key":0.0,"Length":1.0,"Stretch":false,},
           ],},"modifiers":[],"spriteId":null,"trackColour":0,"tracks":[],"traits":0,},
     ],
     "visibleRange": null,
