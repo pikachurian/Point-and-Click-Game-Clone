@@ -21,6 +21,30 @@ typeTick = 0;
 textToDraw = noone;
 textCharactersDrawn = 0;
 
+//Frame.
+width = room_width - 1;
+height = room_height - y - 1;
+
+//Text.
+//textOffsetX = 16;//4;
+//textOffsetY = 16;//4;
+textX = x + 4;
+textY = y + 16;
+
+//Speaker.
+speakerX = x + width / 2;//x + 4;
+speakerY = y + 4;
+
+drawWidth = width;
+drawHeight = height;
+
+centerX = x + width / 2;
+centerY = y + height / 2;
+
+borderSize = 2;
+
+alpha = 0;
+
 /*//Is this textbox closing.
 closing = false;*/
 
@@ -39,10 +63,16 @@ function ChangeState(_state)
 	state = _state;	
 }
 
-function Close()
+function Close(_showClosingAnimation = true)
 {
-	obj_game_master.ChangeState(GS.main);
+	//obj_game_master.ChangeState(GS.main);
+	if(text == noone)
+		_showClosingAnimation = false;
 	ChangeState(TS.closing);
+	if(_showClosingAnimation)
+		instance_create_depth(x, y, depth, obj_textbox_closing);
+	else
+		obj_game_master.ChangeState(GS.main);
 	instance_destroy();
 	show_debug_message("Closed");
 }

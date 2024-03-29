@@ -35,6 +35,10 @@ function ChangeRoom(_roomString)
 	//Delete existing interactables.
 	with(obj_interactable)
 		instance_destroy();
+		
+	with(obj_textbox_closing)
+		instance_destroy();
+		
 	
 	ChangeState(GS.main);
 	show_debug_message(_roomString);

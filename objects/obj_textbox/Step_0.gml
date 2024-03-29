@@ -9,7 +9,6 @@ switch(state)
 		break;
 		
 	case TS.main:
-	
 		//Update typewriter effect.
 		UpdateTypewriterEffect();
 		
@@ -60,6 +59,9 @@ switch(state)
 					break;
 				}
 		}
+		
+		//Increase alpha.
+		alpha = lerp(alpha, 1, 0.05);
 		break;
 		
 	case TS.closing:
