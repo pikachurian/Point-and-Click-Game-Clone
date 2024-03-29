@@ -10,8 +10,14 @@ switch(state)
 		//Use parallax.
 		with(obj_background)
 		{
-			x = mouse_x * -0.1;
-			y = mouse_y * -0.1;
+			x = lerp(x, mouse_x * -0.1, 0.5);
+			y = lerp(y, mouse_y * -0.1, 0.5);
+		}
+		
+		with(obj_interactable)
+		{
+			x = lerp(x, mouse_x * -0.1, 0.5);
+			y = lerp(y, mouse_y * -0.1, 0.5);
 		}
 
 		break;

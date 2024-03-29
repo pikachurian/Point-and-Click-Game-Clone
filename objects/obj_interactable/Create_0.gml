@@ -14,4 +14,11 @@ function ChangeSprite(_string)
 	_string = "spr" + _string;
 	_sprite = asset_get_index(_string);
 	sprite_index = _sprite;
+	
+	switch(sprite_index)
+	{
+		case spr_key:
+			depth += 50;
+			break;
+	}
 }

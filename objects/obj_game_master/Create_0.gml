@@ -32,8 +32,8 @@ met_voice = false;
 has_fish = false;
 
 //Parallax.
-backgroundXScale = 1.25;
-backgroundYScale = 1.25;
+backgroundXScale = 1.15;//1.25;
+backgroundYScale = 1.15;//1.25;
 
 function ChangeRoom(_roomString)
 {
@@ -51,19 +51,6 @@ function ChangeRoom(_roomString)
 	var _roomStruct = struct_get(gameData, _roomString);
 	
 	ChangeState(GS.main);
-	obj_background.image_xscale = backgroundXScale;
-	obj_background.image_yscale = backgroundYScale;
-	
-	//Check the free_move struct variable to see if the player is paused.
-	if(struct_exists(_roomStruct, "free_move"))
-	{
-		if(_roomStruct.free_move == false)
-		{
-			ChangeState(GS.paused);	
-			obj_background.image_xscale = 1;
-			obj_background.image_yscale = 1;
-		}
-	}
 	
 	//Change background sprite.
 	var _backgroundSprite = spr_background_0;
@@ -83,11 +70,38 @@ function ChangeRoom(_roomString)
 		}
 	}
 	
+	
+	obj_background.image_xscale = backgroundXScale;
+	obj_background.image_yscale = backgroundYScale;
+	
+	with(obj_interactable)
+	{
+		image_xscale = other.backgroundXScale;
+		image_yscale = other.backgroundYScale;
+	}
+	
+	//Check the free_move struct variable to see if the player is paused.
+	if(struct_exists(_roomStruct, "free_move"))
+	{
+		if(_roomStruct.free_move == false)
+		{
+			ChangeState(GS.paused);	
+			obj_background.image_xscale = 1;
+			obj_background.image_yscale = 1;
+			with(obj_interactable)
+			{
+				image_xscale = 0;
+				image_yscale = 0;
+			}
+		}
+	}
+	
 	//Create a textbox with lines.
 	if(struct_exists(_roomStruct, "lines"))
 	{
 		CreateTextbox(_roomStruct.lines);
 	}
+	
 }
 
 function ChangeState(_state)
