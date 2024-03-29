@@ -15,7 +15,8 @@ enum GS
 {
 	inTextbox,
 	main,
-	setup
+	setup,
+	paused
 }
 
 state = GS.setup;
@@ -42,10 +43,17 @@ function ChangeRoom(_roomString)
 	with(obj_textbox_closing)
 		instance_destroy();
 		
-	
-	ChangeState(GS.main);
 	show_debug_message(_roomString);
 	var _roomStruct = struct_get(gameData, _roomString);
+	
+	ChangeState(GS.main);
+	
+	//Check the free_move struct variable to see if the player is paused.
+	if(struct_exists(_roomStruct, "free_move"))
+	{
+		if(_roomStruct.free_move == false)
+			ChangeState(GS.paused);	
+	}
 	
 	//Change background sprite.
 	var _backgroundSprite = spr_background_0;
