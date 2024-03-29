@@ -31,6 +31,10 @@ has_key = false;
 met_voice = false;
 has_fish = false;
 
+//Parallax.
+backgroundXScale = 1.25;
+backgroundYScale = 1.25;
+
 function ChangeRoom(_roomString)
 {
 	//Fade effect.
@@ -47,12 +51,18 @@ function ChangeRoom(_roomString)
 	var _roomStruct = struct_get(gameData, _roomString);
 	
 	ChangeState(GS.main);
+	obj_background.image_xscale = backgroundXScale;
+	obj_background.image_yscale = backgroundYScale;
 	
 	//Check the free_move struct variable to see if the player is paused.
 	if(struct_exists(_roomStruct, "free_move"))
 	{
 		if(_roomStruct.free_move == false)
+		{
 			ChangeState(GS.paused);	
+			obj_background.image_xscale = 1;
+			obj_background.image_yscale = 1;
+		}
 	}
 	
 	//Change background sprite.

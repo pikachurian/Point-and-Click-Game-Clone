@@ -39,6 +39,7 @@
     {"name":"obj_textbox_opening","order":6,"path":"objects/obj_textbox_opening/obj_textbox_opening.yy",},
     {"name":"obj_textbox_closing","order":7,"path":"objects/obj_textbox_closing/obj_textbox_closing.yy",},
     {"name":"spr_background_1","order":1,"path":"sprites/spr_background_1/spr_background_1.yy",},
+    {"name":"spr_bedroom","order":3,"path":"sprites/spr_bedroom/spr_bedroom.yy",},
     {"name":"spr_key","order":1,"path":"sprites/spr_key/spr_key.yy",},
   ],
 }

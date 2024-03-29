@@ -5,8 +5,17 @@ switch(state)
 		var _rooms = struct_get_names(gameData);
 		ChangeRoom("rm_in_bed");
 		break;
-}
+		
+	case GS.main:
+		//Use parallax.
+		with(obj_background)
+		{
+			x = mouse_x * -0.1;
+			y = mouse_y * -0.1;
+		}
 
+		break;
+}
 //Restart.
 if(keyboard_check_pressed(vk_alt))
 	game_restart();

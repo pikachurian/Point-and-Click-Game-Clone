@@ -64,6 +64,7 @@
     {"id":{"name":"obj_textbox_closing","path":"objects/obj_textbox_closing/obj_textbox_closing.yy",},},
     {"id":{"name":"spr_background_1","path":"sprites/spr_background_1/spr_background_1.yy",},},
     {"id":{"name":"fnt_pixel","path":"fonts/fnt_pixel/fnt_pixel.yy",},},
+    {"id":{"name":"spr_bedroom","path":"sprites/spr_bedroom/spr_bedroom.yy",},},
     {"id":{"name":"Input","path":"scripts/Input/Input.yy",},},
     {"id":{"name":"spr_door_kitchen","path":"sprites/spr_door_kitchen/spr_door_kitchen.yy",},},
     {"id":{"name":"spr_key","path":"sprites/spr_key/spr_key.yy",},},
