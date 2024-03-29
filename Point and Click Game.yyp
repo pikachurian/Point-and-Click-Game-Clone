@@ -42,6 +42,7 @@
   },
   "resources": [
     {"id":{"name":"spr_in_bed","path":"sprites/spr_in_bed/spr_in_bed.yy",},},
+    {"id":{"name":"spr_kitchen","path":"sprites/spr_kitchen/spr_kitchen.yy",},},
     {"id":{"name":"spr_door","path":"sprites/spr_door/spr_door.yy",},},
     {"id":{"name":"spr_apple_old","path":"sprites/spr_apple_old/spr_apple_old.yy",},},
     {"id":{"name":"obj_textbox5","path":"objects/obj_textbox5/obj_textbox5.yy",},},
@@ -52,6 +53,7 @@
     {"id":{"name":"spr_car","path":"sprites/spr_car/spr_car.yy",},},
     {"id":{"name":"obj_fade","path":"objects/obj_fade/obj_fade.yy",},},
     {"id":{"name":"spr_fish","path":"sprites/spr_fish/spr_fish.yy",},},
+    {"id":{"name":"spr_voice_angry","path":"sprites/spr_voice_angry/spr_voice_angry.yy",},},
     {"id":{"name":"obj_textbox","path":"objects/obj_textbox/obj_textbox.yy",},},
     {"id":{"name":"obj_background","path":"objects/obj_background/obj_background.yy",},},
     {"id":{"name":"spr_singing_fish","path":"sprites/spr_singing_fish/spr_singing_fish.yy",},},
@@ -69,6 +71,7 @@
     {"id":{"name":"fnt_pixel","path":"fonts/fnt_pixel/fnt_pixel.yy",},},
     {"id":{"name":"spr_bedroom","path":"sprites/spr_bedroom/spr_bedroom.yy",},},
     {"id":{"name":"Input","path":"scripts/Input/Input.yy",},},
+    {"id":{"name":"spr_voice_happy","path":"sprites/spr_voice_happy/spr_voice_happy.yy",},},
     {"id":{"name":"spr_door_kitchen","path":"sprites/spr_door_kitchen/spr_door_kitchen.yy",},},
     {"id":{"name":"spr_key","path":"sprites/spr_key/spr_key.yy",},},
     {"id":{"name":"Room1","path":"rooms/Room1/Room1.yy",},},

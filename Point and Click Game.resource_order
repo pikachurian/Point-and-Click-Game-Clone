@@ -22,12 +22,14 @@
   ],
   "ResourceOrderSettings": [
     {"name":"spr_in_bed","order":2,"path":"sprites/spr_in_bed/spr_in_bed.yy",},
+    {"name":"spr_kitchen","order":4,"path":"sprites/spr_kitchen/spr_kitchen.yy",},
     {"name":"spr_door","order":2,"path":"sprites/spr_door/spr_door.yy",},
     {"name":"spr_apple_old","order":4,"path":"sprites/spr_apple_old/spr_apple_old.yy",},
     {"name":"obj_textbox5","order":5,"path":"objects/obj_textbox5/obj_textbox5.yy",},
     {"name":"spr_car","order":3,"path":"sprites/spr_car/spr_car.yy",},
     {"name":"obj_fade","order":8,"path":"objects/obj_fade/obj_fade.yy",},
     {"name":"spr_fish","order":4,"path":"sprites/spr_fish/spr_fish.yy",},
+    {"name":"spr_voice_angry","order":6,"path":"sprites/spr_voice_angry/spr_voice_angry.yy",},
     {"name":"obj_textbox","order":1,"path":"objects/obj_textbox/obj_textbox.yy",},
     {"name":"obj_background","order":4,"path":"objects/obj_background/obj_background.yy",},
     {"name":"spr_singing_fish","order":3,"path":"sprites/spr_singing_fish/spr_singing_fish.yy",},
@@ -43,6 +45,7 @@
     {"name":"obj_textbox_closing","order":7,"path":"objects/obj_textbox_closing/obj_textbox_closing.yy",},
     {"name":"spr_background_1","order":1,"path":"sprites/spr_background_1/spr_background_1.yy",},
     {"name":"spr_bedroom","order":3,"path":"sprites/spr_bedroom/spr_bedroom.yy",},
+    {"name":"spr_voice_happy","order":5,"path":"sprites/spr_voice_happy/spr_voice_happy.yy",},
     {"name":"spr_key","order":1,"path":"sprites/spr_key/spr_key.yy",},
   ],
 }

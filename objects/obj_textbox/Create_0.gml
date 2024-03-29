@@ -72,7 +72,7 @@ function Close(_showClosingAnimation = true)
 	if(_showClosingAnimation)
 		instance_create_depth(x, y, depth, obj_textbox_closing);
 	else
-		obj_game_master.ChangeState(GS.main);
+		obj_game_master.ChangeState(obj_game_master.previousState);
 	instance_destroy();
 	show_debug_message("Closed");
 }
@@ -229,7 +229,7 @@ function UpdateChoices()
 				if(CheckConditional(currentLines[lineIndex].choices[_i]))
 				{
 					text[_i] = choices[_i].text;
-					choiceYPositions[_i] = y + _i * choiceYOffset;
+					choiceYPositions[_i] = textY + _i * choiceYOffset;
 				}else
 				{
 					text[_i] = "";
@@ -238,7 +238,7 @@ function UpdateChoices()
 			}else
 			{
 				text[_i] = choices[_i].text;
-				choiceYPositions[_i] = y + _i * choiceYOffset;
+				choiceYPositions[_i] = textY + _i * choiceYOffset;
 			}
 		}
 		

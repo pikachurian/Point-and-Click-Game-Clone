@@ -20,6 +20,7 @@ enum GS
 }
 
 state = GS.setup;
+previousState = state;
 
 currentRoomString = noone;
 
@@ -88,10 +89,14 @@ function ChangeRoom(_roomString)
 			ChangeState(GS.paused);	
 			obj_background.image_xscale = 1;
 			obj_background.image_yscale = 1;
+			obj_background.x = 0;
+			obj_background.y = 0;
 			with(obj_interactable)
 			{
 				image_xscale = 0;
 				image_yscale = 0;
+				x = 0;
+				y = 0;
 			}
 		}
 	}

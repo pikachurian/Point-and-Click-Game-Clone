@@ -6,6 +6,7 @@ function Global(){
 
 function CreateTextbox(_lines)
 {
+	obj_game_master.previousState = obj_game_master.state;
 	obj_game_master.ChangeState(GS.inTextbox);
 	var _textbox = instance_create_layer(0, 120, "Textbox", obj_textbox);//instance_create_layer(0, 96, "Textbox", obj_textbox_opening);//instance_create_layer(0, 96, "Textbox", obj_textbox);
 	_textbox.lines = _lines;
