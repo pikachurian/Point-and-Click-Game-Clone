@@ -49,6 +49,7 @@
     {"id":{"name":"spr_background_0","path":"sprites/spr_background_0/spr_background_0.yy",},},
     {"id":{"name":"spr_apple","path":"sprites/spr_apple/spr_apple.yy",},},
     {"id":{"name":"spr_car","path":"sprites/spr_car/spr_car.yy",},},
+    {"id":{"name":"obj_fade","path":"objects/obj_fade/obj_fade.yy",},},
     {"id":{"name":"spr_fish","path":"sprites/spr_fish/spr_fish.yy",},},
     {"id":{"name":"obj_textbox","path":"objects/obj_textbox/obj_textbox.yy",},},
     {"id":{"name":"obj_background","path":"objects/obj_background/obj_background.yy",},},

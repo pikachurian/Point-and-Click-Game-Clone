@@ -32,6 +32,9 @@ has_fish = false;
 
 function ChangeRoom(_roomString)
 {
+	//Fade effect.
+	obj_fade.alpha = 1;
+	
 	//Delete existing interactables.
 	with(obj_interactable)
 		instance_destroy();
