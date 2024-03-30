@@ -128,8 +128,8 @@ function SetTrue(_varString)
 		case "has_fish":
 			if(instance_exists(interactableTarget))
 				instance_destroy(interactableTarget);
+			audio_play_sound(sfx_item_get, 15, false);
 			break;
 	}
-	
-	audio_play_sound(sfx_item_get, 15, false);
+
 }
