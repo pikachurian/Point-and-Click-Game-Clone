@@ -12,6 +12,7 @@ function CreateTextbox(_lines)
 	_textbox.lines = _lines;
 }
 	
+/*This code was for testing the game before I added JSON loading.
 global.gameData = {
     rm_in_bed : {
         dev_notes : "Game starts in looking at a bed",

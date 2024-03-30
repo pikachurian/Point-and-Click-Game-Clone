@@ -1,5 +1,10 @@
 switch(state)
 {
+	case GS.preSetup:
+		if(GetInput(INPUT.mousePressed))
+			ChangeState(GS.setup);
+		break;
+		
 	case GS.setup:
 		//Load first room.
 		var _rooms = struct_get_names(gameData);

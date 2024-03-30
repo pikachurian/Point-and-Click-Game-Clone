@@ -16,10 +16,11 @@ enum GS
 	inTextbox,
 	main,
 	setup,
-	paused
+	paused,
+	preSetup
 }
 
-state = GS.setup;
+state = GS.preSetup;
 previousState = state;
 
 currentRoomString = noone;
